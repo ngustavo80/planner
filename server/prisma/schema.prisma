@@ -17,6 +17,8 @@ model Trip {
   ends_at      DateTime
   is_confirmed Boolean  @default(false)
   created_at   DateTime @default(now())
+  owner_name   String
+  owner_email  String
 
   @@map("trips")
 }
