@@ -14,11 +14,12 @@ import { updateTrip } from "./routes/updateTrip"
 import { getTripDetails } from "./routes/getTripDetails"
 import { getParticipant } from "./routes/getParticipant"
 import { errorHandler } from "./errorHandler"
+import { env } from "./env"
 
 const app = fastify()
 
 app.register(cors, {
-  origin: 'http://localhost:3000',
+  origin: env.FRONTEND_BASE_URL,
 })
 
 app.setValidatorCompiler(validatorCompiler)
@@ -39,6 +40,6 @@ app.register(getParticipants)
 app.register(getParticipant)
 app.register(updateTrip)
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: env.PORT }).then(() => {
   console.log("Server running")
 })
